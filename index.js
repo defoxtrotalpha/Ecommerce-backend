@@ -5,6 +5,11 @@ const mongoose = require("mongoose");
 const { ProductRouter } = require("./routes/ProductRoutes");
 const { CategoryRouter } = require("./routes/CategoryRoutes");
 const { BrandRouter } = require("./routes/BrandRoutes");
+const { UserRouter } = require("./routes/UserRoutes");
+const { AuthRouter } = require("./routes/AuthRoutes");
+const { CartRouter } = require("./routes/CartRoutes");
+const { OrderRouter } = require("./routes/OrderRoutes");
+
 const cors = require("cors");
 
 // Creating a db connection
@@ -32,8 +37,12 @@ server.use(
 );
 server.use(express.json()); //to parse req.body as JSON
 server.use("/products", ProductRouter);
+server.use("/users", UserRouter);
+server.use("/auth", AuthRouter);
 server.use("/categories", CategoryRouter);
 server.use("/brands", BrandRouter);
+server.use("/cart", CartRouter);
+server.use("/orders", OrderRouter);
 
 // Definig a route. Callback func will be called
 server.get("/", (req, res) => {
